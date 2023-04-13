@@ -1,0 +1,71 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class enemy : MonoBehaviour
+{
+
+    public Transform soldier;
+    int moveSpeed = 2;
+    int maxDist = 101;
+    int minDist = 5;
+
+/*
+    public static event Action<enemy> EnemyKilled;
+    [SerializeField] float health, maxHealth = 1f;
+
+    [SerializeField] float moveSpeed = 8f;
+    Rigidbody rb;
+    public Transform soldier;
+    Vector2 moveDirection;
+
+    private void Begin()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        health = maxHealth;
+        soldier = GameObject.Find("soldier").transform;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if(soldier){
+            Vector3 direction = (soldier.position - transform.position).normalized;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            rb.rotation = new Quaternion (angle, 0, 0, 0);
+            moveDirection = direction;
+        }
+
+    }
+
+    void FixedUpdate()
+    {
+        if(soldier)
+        {
+            rb.velocity = new Vector2(moveDirection.x, moveDirection.y) * moveSpeed;
+        }
+    }
+    */
+
+    void FixedUpdate()
+    {
+        transform.LookAt(soldier);
+
+        if (Vector3.Distance(transform.position, soldier.position) <= maxDist)
+        {
+            if (Vector3.Distance(transform.position, soldier.position) <= minDist)
+            {
+            }
+            else
+            {
+                transform.position += transform. forward * moveSpeed * Time.deltaTime;
+            }
+        }
+    }
+}
