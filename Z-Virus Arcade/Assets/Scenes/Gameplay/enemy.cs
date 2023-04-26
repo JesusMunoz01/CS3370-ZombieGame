@@ -7,9 +7,11 @@ public class enemy : MonoBehaviour
 {
 
     public Transform soldier;
+    public HealthBar healthb;
     int moveSpeed = 2;
     int maxDist = 101;
     int minDist = 5;
+    public int health = 50;
 
 /*
     public static event Action<enemy> EnemyKilled;
@@ -52,20 +54,32 @@ public class enemy : MonoBehaviour
         }
     }
     */
-
+    void Start()
+    {
+        healthb.MaxHealth(health);
+    }
     void FixedUpdate()
     {
         transform.LookAt(soldier);
-
-        if (Vector3.Distance(transform.position, soldier.position) <= maxDist)
+        if(health > 0)
         {
-            if (Vector3.Distance(transform.position, soldier.position) <= minDist)
+            if (Vector3.Distance(transform.position, soldier.position) <= maxDist)
             {
-            }
-            else
-            {
-                transform.position += transform. forward * moveSpeed * Time.deltaTime;
+                if (Vector3.Distance(transform.position, soldier.position) <= minDist)
+                {
+                }
+                else
+                {
+                    transform.position += transform.forward * moveSpeed * Time.deltaTime;
+                }
             }
         }
+        else{}
+
+    }
+
+    public void DamageEnemy(int amnt){
+        health -= amnt;
+        healthb.Health(health);
     }
 }
