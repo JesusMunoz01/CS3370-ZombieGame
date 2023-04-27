@@ -10,11 +10,12 @@ public class Player : MonoBehaviour
     Camera view;
 
     private float GRAVITY = 10.0f;
-    private float JUMP_SPEED = 20.0f;
+    private float JUMP_SPEED = 5.0f;
     private Vector3 checkArea = new Vector3(0.1f, 1f, 0f);
     public Interactable focus;
     public enemy opponent;
     public HealthBar healthBar;
+    public WeaponSwitch weapon;
     public float searchTimer = 5f;
     public bool searchPressed = false;
     public int health = 100;
@@ -24,11 +25,13 @@ public class Player : MonoBehaviour
         view = Camera.main;
         m_rb = GetComponent<Rigidbody>();
         m_cc = GetComponent<CharacterController>();
+        weapon = GetComponentInChildren<WeaponSwitch>();
         healthBar.MaxHealth(health);
     }
 
     void Update()
     {
+        // Character Movement
         if(m_cc.isGrounded){
             m_vel = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical");
             
@@ -41,12 +44,8 @@ public class Player : MonoBehaviour
         }else{
                  m_vel += (Vector3.down * GRAVITY * Time.deltaTime);
         }
-        //m_vel = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
-        //m_vel = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical");
 
-        //m_cc.Move(m_vel * 10.0f * Time.deltaTime);
-
-        //m_rb.AddForce(m_vel * 10.0f, ForceMode.Acceleration);
+        // Camera rotation with Q and E
         if(Input.GetKey(KeyCode.Q)){
             transform.Rotate(Vector3.down * 100 * Time.deltaTime);
         }
@@ -54,17 +53,11 @@ public class Player : MonoBehaviour
             transform.Rotate(Vector3.up * 100 * Time.deltaTime);
         }
 
-        // float mouseX = Input.GetAxisRaw("Mouse X") * 100;
-        // float mouseY = Input.GetAxisRaw("Mouse Y") * 100;
-        // Quaternion rotationX = Quaternion.AngleAxis(mouseY, Vector3.down);
-        // Quaternion rotationY = Quaternion.AngleAxis(mouseX, Vector3.up);
-        // Quaternion rotation = rotationX * rotationY;
-        // transform.localRotation = Quaternion.Slerp(transform.localRotation, rotation, Time.deltaTime);
-        float mouseX = Input.GetAxisRaw("Mouse X") * 100;
-        transform.Rotate(Vector3.up *  mouseX * Time.deltaTime);
+        // Camera rotation with mouse
+        transform.Rotate(transform.up, Input.GetAxis("Mouse X") * 3, 0);
 
+        // Stop searching
         if(Input.GetKey(KeyCode.G)){
-        //if(Input.GetMouseButton(1)){
             Ray ray = view.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
@@ -73,6 +66,7 @@ public class Player : MonoBehaviour
                 }
             }
 
+        // Searching function
         if(Input.GetKeyDown(KeyCode.F)){
             Ray ray = view.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -87,19 +81,31 @@ public class Player : MonoBehaviour
 
         }
 
+        // Attack & Calculations
         if(Input.GetMouseButtonDown(0)){
             Ray ray = view.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-
-            if(Physics.Raycast(ray, out hit, 100)){
-                enemy search = hit.collider.GetComponent<enemy>();
-                if (search != null){
-                    SetEnemy(search);
+            if(Physics.Raycast(ray, out hit, weapon.getRange())){
+                enemy entity = hit.collider.GetComponent<enemy>();
+                if (entity != null){
+                    SetEnemy(entity);
                 }
             }
         }
-
+        
+        // Lock mouse
+        if(Input.GetMouseButtonDown(1)){
+            if(Cursor.lockState == CursorLockMode.Locked)
+            {
+                Cursor.lockState = CursorLockMode.None;
+            }else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+        }
+        
+        // Searching counter
         if(searchPressed == true){
             searchTimer -= Time.deltaTime;
             Debug.Log(searchTimer);
@@ -112,8 +118,9 @@ public class Player : MonoBehaviour
             }   
         }
 
+        // Self damage (Testing purposes)
         if(Input.GetKeyDown(KeyCode.L)){
-            TakeDamage(10);
+            TakeDamage(weapon.getDamage());
         }
     }
 
@@ -134,7 +141,7 @@ public class Player : MonoBehaviour
 
      void SetEnemy(enemy newFocus){
         opponent = newFocus;
-        newFocus.DamageEnemy(10);
+        newFocus.DamageEnemy(weapon.getDamage());
         RemoveEnemy();
     }
 
