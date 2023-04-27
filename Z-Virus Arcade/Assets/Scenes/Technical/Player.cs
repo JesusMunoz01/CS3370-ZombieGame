@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     Camera view;
 
     private float GRAVITY = 10.0f;
-    private float JUMP_SPEED = 20.0f;
+    private float JUMP_SPEED = 5.0f;
     private Vector3 checkArea = new Vector3(0.1f, 1f, 0f);
     public Interactable focus;
     public enemy opponent;
