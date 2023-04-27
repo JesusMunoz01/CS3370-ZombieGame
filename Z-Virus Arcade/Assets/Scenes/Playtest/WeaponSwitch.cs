@@ -3,6 +3,7 @@ using UnityEngine;
 public class WeaponSwitch : MonoBehaviour
 {
     public Weapons weapon;
+    public PoolScript pool;
     public int currentWeapon = 0;
     // Start is called before the first frame update
     void Start()

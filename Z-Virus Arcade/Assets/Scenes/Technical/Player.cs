@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     public enemy opponent;
     public HealthBar healthBar;
     public WeaponSwitch weapon;
+    public PoolScript pool;
     public float searchTimer = 5f;
     public bool searchPressed = false;
     public int health = 100;
@@ -107,15 +108,19 @@ public class Player : MonoBehaviour
         
         // Searching counter
         if(searchPressed == true){
-            searchTimer -= Time.deltaTime;
-            Debug.Log(searchTimer);
+            //searchTimer -= Time.deltaTime;
+            //Debug.Log(searchTimer);
 
-            if(searchTimer <= 0){
-                RandomEvent();
+            // if(searchTimer <= 0){
+            //     searchPressed = false;
+            //     RemoveFocus();
+            //     searchTimer = 5f;
+            // } 
+            if(focus.Complete()){
                 searchPressed = false;
                 RemoveFocus();
                 searchTimer = 5f;
-            }   
+            }     
         }
 
         // Self damage (Testing purposes)
@@ -147,23 +152,6 @@ public class Player : MonoBehaviour
 
     void RemoveEnemy(){
         opponent = null;
-    }
-
-    void RandomEvent(){
-        string[] events = {"-10Hp", "+10Hp", "+100 ammo", "Nice luck!"};
-        var chance = Random.Range(1f, 100f);
-        if(chance <= 2){
-            Debug.Log(events[4]);
-        }
-        else if(chance <= 20){
-            Debug.Log(events[1]);
-        }
-        else if(chance <= 60){
-            Debug.Log(events[0]);
-        }
-        else{
-            Debug.Log(events[2]);
-        }
     }
 
     void TakeDamage(int amnt)
