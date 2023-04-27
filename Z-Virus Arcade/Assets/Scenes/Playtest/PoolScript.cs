@@ -26,7 +26,7 @@ public class PoolScript : MonoBehaviour
 
             index++;
         }
-        Debug.Log("Found Staff");
+        Debug.Log("Found Weapon");
     }
 }
 

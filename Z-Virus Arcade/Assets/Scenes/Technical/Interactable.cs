@@ -23,8 +23,8 @@ public class Interactable : MonoBehaviour
             if(searchTimer <= 0){
                 GameObject thing;
                 thing = GameObject.Find("LootPool");
-                pool = thing.GetComponent<PoolScript>();
-                //pool = GetComponentInChildren<PoolScript>();
+                //pool = thing.GetComponent<PoolScript>();
+                pool = GetComponentInChildren<PoolScript>();
                 pool.SelectDrop();
                 RandomEvent();
                 completeSearch = true;
@@ -50,7 +50,7 @@ public class Interactable : MonoBehaviour
         isSearching = false;
         player = null;
         this.enabled = false;
-        transform.GetComponentInParent<SearchedObject>().Disable();
+        //transform.GetComponentInParent<SearchedObject>().Disable();
     }
 
     public bool Complete(){
