@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     public float searchTimer = 5f;
     public bool searchPressed = false;
     public int health = 100;
+    bool animPlaying = false;
+    float animTimer = 1f;
 
     void Start()
     {
@@ -35,11 +37,18 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        
+        if (animPlaying = false){
+            test.Play("Idle_Normal_SwordAndShield 0");
+        }
+        else {animTimer -= Time.deltaTime;}
+
+        if(animTimer <= 0){
+            animPlaying = false;
+        }
         // Character Movement
         if(m_cc.isGrounded){
             m_vel = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical");
-            
+            //test.Play("MoveFWD_Battle_RM_SwordAndShield");
             m_vel = m_vel * 10.0f;
 
             if(Input.GetAxis("Jump") > 0){
@@ -47,6 +56,7 @@ public class Player : MonoBehaviour
             }
 
         }else{
+                test.Play("Idle_Normal_SwordAndShield 0");
                  m_vel += (Vector3.down * GRAVITY * Time.deltaTime);
         }
 
@@ -94,7 +104,10 @@ public class Player : MonoBehaviour
             if(Physics.Raycast(ray, out hit, weapon.getRange())){
                 enemy entity = hit.collider.GetComponent<enemy>();
                 if (entity != null){
+                    animPlaying = true;
+                    animTimer = 0.5f;
                     test.Play("Attack01_SwordAndShiled");
+                    test.Play("Idle_Normal_SwordAndShield 0");
                     SetEnemy(entity);
                 }
             }
