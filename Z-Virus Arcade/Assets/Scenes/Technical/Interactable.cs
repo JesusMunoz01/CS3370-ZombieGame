@@ -12,6 +12,7 @@ public class Interactable : MonoBehaviour
     public searchTimerText text;
     public Player user;
     public float searchTimer = 6f;
+    public float textTimer = 2f;
 
     void Start(){
         GameObject timerText;
@@ -19,7 +20,7 @@ public class Interactable : MonoBehaviour
         text = timerText.GetComponentInChildren<searchTimerText>();
 
         GameObject playerUser;
-        playerUser = GameObject.Find("Player");
+        playerUser = GameObject.Find("MaleCharacterPolyart");
         user = playerUser.GetComponentInChildren<Player>();
     }
 

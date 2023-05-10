@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     private float JUMP_SPEED = 5.0f;
     private Vector3 checkArea = new Vector3(0.1f, 1f, 0f);
     public Interactable focus;
+    public Animator test;
     public enemy opponent;
     public HealthBar healthBar;
     public WeaponSwitch weapon;
@@ -28,10 +29,13 @@ public class Player : MonoBehaviour
         m_cc = GetComponent<CharacterController>();
         weapon = GetComponentInChildren<WeaponSwitch>();
         healthBar.MaxHealth(health);
+        test = gameObject.GetComponent<Animator>();
+        test.Play("Idle_Normal_SwordAndShield 0");
     }
 
     void Update()
     {
+        
         // Character Movement
         if(m_cc.isGrounded){
             m_vel = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical");
@@ -90,6 +94,9 @@ public class Player : MonoBehaviour
             if(Physics.Raycast(ray, out hit, weapon.getRange())){
                 enemy entity = hit.collider.GetComponent<enemy>();
                 if (entity != null){
+                    
+                    test.Play("Attack01_SwordAndShiled");
+                    test.Play("Idle_Normal_SwordAndShield 0");
                     SetEnemy(entity);
                 }
             }
