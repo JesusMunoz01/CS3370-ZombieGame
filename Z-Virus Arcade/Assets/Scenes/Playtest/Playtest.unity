@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6683,6 +6683,9 @@ MonoBehaviour:
   soldier: {fileID: 1842197795}
   healthb: {fileID: 1435857847}
   health: 50
+  cooldown: 5
+  cooldownTimer: 5
+  enemyDamage: 5
 --- !u!54 &342517580
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7940,6 +7943,108 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6476529798019570804, guid: 0fe65fec31a96cc49a3146a03f035c48, type: 3}
   m_PrefabInstance: {fileID: 339898760}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &397992322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 397992323}
+  - component: {fileID: 397992326}
+  - component: {fileID: 397992325}
+  - component: {fileID: 397992324}
+  m_Layer: 5
+  m_Name: Canvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &397992323
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397992322}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 463280734}
+  m_Father: {fileID: 1399641934}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
+--- !u!114 &397992324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397992322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &397992325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397992322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &397992326
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397992322}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!4 &401111014 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6476529798019570804, guid: 0fe65fec31a96cc49a3146a03f035c48, type: 3}
@@ -8502,6 +8607,9 @@ MonoBehaviour:
   soldier: {fileID: 1842197795}
   healthb: {fileID: 430200094}
   health: 50
+  cooldown: 5
+  cooldownTimer: 5
+  enemyDamage: 5
 --- !u!54 &446369657
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8989,6 +9097,101 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 83145382902cecc4286a4f62b720fb37, type: 3}
+--- !u!1 &463280733
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 463280734}
+  - component: {fileID: 463280737}
+  - component: {fileID: 463280736}
+  - component: {fileID: 463280735}
+  m_Layer: 5
+  m_Name: Timer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &463280734
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463280733}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 397992323}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 80}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &463280735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463280733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe4d2689e10efec4396617a28d888467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerText: {fileID: 463280736}
+  timer: 2
+--- !u!114 &463280736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463280733}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 18
+    m_FontStyle: 1
+    m_BestFit: 1
+    m_MinSize: 1
+    m_MaxSize: 40
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &463280737
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463280733}
+  m_CullTransparentMesh: 1
 --- !u!1 &468077290
 GameObject:
   m_ObjectHideFlags: 0
@@ -9436,6 +9639,9 @@ MonoBehaviour:
   soldier: {fileID: 1842197795}
   healthb: {fileID: 867236565}
   health: 50
+  cooldown: 5
+  cooldownTimer: 5
+  enemyDamage: 5
 --- !u!54 &498531444
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10550,6 +10756,9 @@ MonoBehaviour:
   soldier: {fileID: 1842197795}
   healthb: {fileID: 163135669}
   health: 100
+  cooldown: 5
+  cooldownTimer: 5
+  enemyDamage: 5
 --- !u!54 &554450163
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10896,6 +11105,9 @@ MonoBehaviour:
   soldier: {fileID: 1842197795}
   healthb: {fileID: 1620697359}
   health: 50
+  cooldown: 5
+  cooldownTimer: 5
+  enemyDamage: 5
 --- !u!54 &576441963
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13543,6 +13755,9 @@ MonoBehaviour:
   soldier: {fileID: 1842197795}
   healthb: {fileID: 27599549}
   health: 500
+  cooldown: 5
+  cooldownTimer: 5
+  enemyDamage: 5
 --- !u!54 &692976365
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -16315,6 +16530,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   area: 4
   pool: {fileID: 0}
+  text: {fileID: 0}
+  user: {fileID: 0}
   searchTimer: 6
 --- !u!4 &843133732 stripped
 Transform:
@@ -16611,6 +16828,9 @@ MonoBehaviour:
   soldier: {fileID: 1842197795}
   healthb: {fileID: 1909291015}
   health: 50
+  cooldown: 5
+  cooldownTimer: 5
+  enemyDamage: 5
 --- !u!54 &853322532
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19894,6 +20114,9 @@ MonoBehaviour:
   soldier: {fileID: 1842197795}
   healthb: {fileID: 101763054}
   health: 50
+  cooldown: 5
+  cooldownTimer: 5
+  enemyDamage: 5
 --- !u!54 &1061071109
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -20565,6 +20788,9 @@ MonoBehaviour:
   soldier: {fileID: 1842197795}
   healthb: {fileID: 1030664889}
   health: 50
+  cooldown: 5
+  cooldownTimer: 5
+  enemyDamage: 5
 --- !u!54 &1104643942
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -20910,6 +21136,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   area: 3
   pool: {fileID: 1415100905}
+  text: {fileID: 0}
+  user: {fileID: 0}
   searchTimer: 6
 --- !u!1 &1163016546
 GameObject:
@@ -23174,6 +23402,9 @@ MonoBehaviour:
   soldier: {fileID: 1842197795}
   healthb: {fileID: 875739577}
   health: 100
+  cooldown: 5
+  cooldownTimer: 5
+  enemyDamage: 5
 --- !u!54 &1282835784
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -24171,6 +24402,9 @@ MonoBehaviour:
   soldier: {fileID: 1842197795}
   healthb: {fileID: 296894899}
   health: 50
+  cooldown: 5
+  cooldownTimer: 5
+  enemyDamage: 5
 --- !u!54 &1315683939
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -24892,6 +25126,9 @@ MonoBehaviour:
   soldier: {fileID: 1842197795}
   healthb: {fileID: 309502248}
   health: 50
+  cooldown: 5
+  cooldownTimer: 5
+  enemyDamage: 5
 --- !u!54 &1359296059
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -25933,7 +26170,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 1.99, z: -3.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 397992323}
   m_Father: {fileID: 1842197795}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 14.949, y: 0, z: 0}
@@ -26327,6 +26565,9 @@ MonoBehaviour:
   soldier: {fileID: 1842197795}
   healthb: {fileID: 1313460020}
   health: 50
+  cooldown: 5
+  cooldownTimer: 5
+  enemyDamage: 5
 --- !u!54 &1413011228
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -26835,6 +27076,9 @@ MonoBehaviour:
   soldier: {fileID: 1842197795}
   healthb: {fileID: 2117841735}
   health: 50
+  cooldown: 5
+  cooldownTimer: 5
+  enemyDamage: 5
 --- !u!54 &1422398310
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -27124,6 +27368,9 @@ MonoBehaviour:
   soldier: {fileID: 1842197795}
   healthb: {fileID: 1780751354}
   health: 100
+  cooldown: 5
+  cooldownTimer: 5
+  enemyDamage: 5
 --- !u!54 &1432853200
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -28148,6 +28395,9 @@ MonoBehaviour:
   soldier: {fileID: 1842197795}
   healthb: {fileID: 1802337374}
   health: 50
+  cooldown: 5
+  cooldownTimer: 5
+  enemyDamage: 5
 --- !u!54 &1499435109
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -28883,6 +29133,9 @@ MonoBehaviour:
   soldier: {fileID: 1842197795}
   healthb: {fileID: 1375666917}
   health: 100
+  cooldown: 5
+  cooldownTimer: 5
+  enemyDamage: 5
 --- !u!54 &1525231750
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -29732,6 +29985,9 @@ MonoBehaviour:
   soldier: {fileID: 1842197795}
   healthb: {fileID: 1795760176}
   health: 100
+  cooldown: 5
+  cooldownTimer: 5
+  enemyDamage: 5
 --- !u!54 &1571851557
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -29928,6 +30184,9 @@ MonoBehaviour:
   soldier: {fileID: 1842197795}
   healthb: {fileID: 1288492825}
   health: 100
+  cooldown: 5
+  cooldownTimer: 5
+  enemyDamage: 5
 --- !u!54 &1574420738
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -35887,6 +36146,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   area: 2
   pool: {fileID: 0}
+  text: {fileID: 0}
+  user: {fileID: 0}
   searchTimer: 6
 --- !u!1 &1890795608
 GameObject:
@@ -36718,6 +36979,9 @@ MonoBehaviour:
   soldier: {fileID: 1842197795}
   healthb: {fileID: 879532082}
   health: 200
+  cooldown: 5
+  cooldownTimer: 5
+  enemyDamage: 5
 --- !u!54 &1943664516
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -37502,6 +37766,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   area: 2
   pool: {fileID: 0}
+  text: {fileID: 0}
+  user: {fileID: 0}
   searchTimer: 6
 --- !u!1 &1965823392
 GameObject:

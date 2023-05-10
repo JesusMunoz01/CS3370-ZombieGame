@@ -12,6 +12,9 @@ public class enemy : MonoBehaviour
     int maxDist = 101;
     int minDist = 5;
     public int health = 50;
+    public float cooldown = 5;
+    public float cooldownTimer = 5;
+    public int enemyDamage = 5;
 
 /*
     public static event Action<enemy> EnemyKilled;
@@ -61,12 +64,20 @@ public class enemy : MonoBehaviour
     void FixedUpdate()
     {
         transform.LookAt(soldier);
+        if(cooldownTimer > -0.1){
+            cooldownTimer -= Time.deltaTime;
+        }
         if(health > 0)
         {
             if (Vector3.Distance(transform.position, soldier.position) <= maxDist)
             {
                 if (Vector3.Distance(transform.position, soldier.position) <= minDist)
                 {
+                    if(cooldownTimer <= 0){
+                        Player user = soldier.GetComponent<Player>();
+                        user.TakeDamage(enemyDamage);
+                        cooldownTimer = cooldown;
+                    }
                 }
                 else
                 {

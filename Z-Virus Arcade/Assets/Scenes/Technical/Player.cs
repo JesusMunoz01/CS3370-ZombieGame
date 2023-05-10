@@ -154,9 +154,15 @@ public class Player : MonoBehaviour
         opponent = null;
     }
 
-    void TakeDamage(int amnt)
+    public void TakeDamage(int amnt)
     {
         health -= amnt;
+        healthBar.Health(health);
+    }
+
+    public void GetHealth(int amnt)
+    {
+        health += amnt;
         healthBar.Health(health);
     }
 
