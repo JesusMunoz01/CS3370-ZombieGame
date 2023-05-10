@@ -94,9 +94,7 @@ public class Player : MonoBehaviour
             if(Physics.Raycast(ray, out hit, weapon.getRange())){
                 enemy entity = hit.collider.GetComponent<enemy>();
                 if (entity != null){
-                    
                     test.Play("Attack01_SwordAndShiled");
-                    test.Play("Idle_Normal_SwordAndShield 0");
                     SetEnemy(entity);
                 }
             }
