@@ -201,6 +201,7 @@ public class Player : MonoBehaviour
     {
         health -= amnt;
         healthBar.Health(health);
+        test.Play("GetHit01_SwordAndShield");
     }
 
     public void GetHealth(int amnt)
