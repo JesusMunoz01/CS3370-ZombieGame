@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     bool animPlaying = false;
     bool playerDead = false;
     float animTimer = 1f;
+    float pointerOffset = 50;
 
     void Start()
     {
@@ -103,7 +104,7 @@ public class Player : MonoBehaviour
                 Ray ray = view.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
 
-                if(Physics.Raycast(ray, out hit, 100)){
+                if(Physics.Raycast(ray, out hit, 20)){
                     Interactable search = hit.collider.GetComponent<Interactable>();
                     if (search != null){
                         searchPressed = true;
@@ -115,7 +116,7 @@ public class Player : MonoBehaviour
 
             // Attack & Calculations
             if(Input.GetMouseButtonDown(0)){
-                Ray ray = view.ScreenPointToRay(Input.mousePosition);
+                Ray ray = view.ScreenPointToRay(Input.mousePosition + new Vector3(0,pointerOffset,0));
                 RaycastHit hit;
 
                 if(Physics.Raycast(ray, out hit, weapon.getRange())){
@@ -134,9 +135,11 @@ public class Player : MonoBehaviour
                 if(Cursor.lockState == CursorLockMode.Locked)
                 {
                     Cursor.lockState = CursorLockMode.None;
+                    pointerOffset = 0;
                 }else
                 {
                     Cursor.lockState = CursorLockMode.Locked;
+                    pointerOffset = 80;
                 }
             }
             
