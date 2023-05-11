@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class Player : MonoBehaviour
     bool playerDead = false;
     float animTimer = 1f;
     float pointerOffset = 50;
+
+    public string returnMC;
 
     void Start()
     {
@@ -167,8 +170,11 @@ public class Player : MonoBehaviour
         }
         else
             if(playerDead == false){
-            test.Play("Die01_SwordAndShield");
-            playerDead = true;
+                test.Play("Die01_SwordAndShield");
+                playerDead = true;
+            }
+            if(playerDead == true){
+                SceneManager.LoadScene(returnMC);
             }
     }
 
