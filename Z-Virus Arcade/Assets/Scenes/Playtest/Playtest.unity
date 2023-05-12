@@ -12305,6 +12305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   area: 4
+  player: {fileID: 0}
   pool: {fileID: 0}
   text: {fileID: 0}
   user: {fileID: 0}
@@ -12312,7 +12313,6 @@ MonoBehaviour:
   textTimer: 2
   dispText: Obtained Mace
   hasPool: 1
-  isHealingItem: 0
 --- !u!4 &538609244 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6982000879393223617, guid: 2269c5cfaa7f7314bba868f540b5ddad, type: 3}
@@ -19948,6 +19948,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   area: 4
+  player: {fileID: 0}
   pool: {fileID: 0}
   text: {fileID: 0}
   user: {fileID: 0}
@@ -19955,7 +19956,6 @@ MonoBehaviour:
   textTimer: 2
   dispText: 
   hasPool: 0
-  isHealingItem: 0
 --- !u!4 &843133732 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6476529798019570804, guid: 0fe65fec31a96cc49a3146a03f035c48, type: 3}
@@ -26627,6 +26627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   area: 3
+  player: {fileID: 0}
   pool: {fileID: 1415100905}
   text: {fileID: 0}
   user: {fileID: 0}
@@ -26634,7 +26635,6 @@ MonoBehaviour:
   textTimer: 2
   dispText: Obtained a Sword!
   hasPool: 1
-  isHealingItem: 0
 --- !u!1 &1163016546
 GameObject:
   m_ObjectHideFlags: 0
@@ -33233,6 +33233,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6476529798019570804, guid: 0fe65fec31a96cc49a3146a03f035c48, type: 3}
   m_PrefabInstance: {fileID: 1828206707}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1412266850
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1412266852}
+  - component: {fileID: 1412266851}
+  m_Layer: 0
+  m_Name: Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1412266851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412266850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeb36192a1d6b428a88ba1416609a61a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zombie: {fileID: 1962796210}
+  timer: 10
+--- !u!4 &1412266852
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412266850}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 531.97, y: 0, z: 1162.12}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1413382539
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44643,6 +44689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   area: 2
+  player: {fileID: 0}
   pool: {fileID: 0}
   text: {fileID: 0}
   user: {fileID: 0}
@@ -44650,7 +44697,6 @@ MonoBehaviour:
   textTimer: 2
   dispText: 
   hasPool: 0
-  isHealingItem: 0
 --- !u!1 &1890795608
 GameObject:
   m_ObjectHideFlags: 0
@@ -46634,6 +46680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   area: 5
+  player: {fileID: 0}
   pool: {fileID: 0}
   text: {fileID: 0}
   user: {fileID: 0}
@@ -46641,7 +46688,6 @@ MonoBehaviour:
   textTimer: 1
   dispText: 
   hasPool: 0
-  isHealingItem: 0
 --- !u!1 &1965823392
 GameObject:
   m_ObjectHideFlags: 0
@@ -47072,6 +47118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   area: 3
+  player: {fileID: 0}
   pool: {fileID: 0}
   text: {fileID: 0}
   user: {fileID: 0}
@@ -47079,7 +47126,6 @@ MonoBehaviour:
   textTimer: 1
   dispText: 
   hasPool: 0
-  isHealingItem: 0
 --- !u!65 &1982441864
 BoxCollider:
   m_ObjectHideFlags: 0
