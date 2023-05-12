@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     public HealthBar healthBar;
     public WeaponSwitch weapon;
     public PoolScript pool;
+    public searchTimerText text;
     public float searchTimer = 5f;
     public bool searchPressed = false;
     public int health = 100;
@@ -26,7 +27,7 @@ public class Player : MonoBehaviour
     bool playerDead = false;
     float animTimer = 1f;
     float pointerOffset = 50;
-
+    float quitTimer = 3f;
     public string returnMC;
 
     void Start()
@@ -38,6 +39,10 @@ public class Player : MonoBehaviour
         healthBar.MaxHealth(health);
         test = gameObject.GetComponent<Animator>();
         test.Play("Idle_Battle_SwordAndShield");
+
+        GameObject timerText;
+        timerText = GameObject.Find("Timer");
+        text = timerText.GetComponentInChildren<searchTimerText>();
     }
 
     void Update()
@@ -171,10 +176,17 @@ public class Player : MonoBehaviour
         else
             if(playerDead == false){
                 test.Play("Die01_SwordAndShield");
+                text.showTimer();
+                text.setText("You Died");
                 playerDead = true;
             }
             if(playerDead == true){
-                SceneManager.LoadScene(returnMC);
+                quitTimer -= Time.deltaTime;
+                if(quitTimer <= 0){
+                    Cursor.lockState = CursorLockMode.None;
+                    text.endTimer();
+                    SceneManager.LoadScene(returnMC);
+                }
             }
     }
 
